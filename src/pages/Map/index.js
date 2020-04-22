@@ -12,11 +12,13 @@ class Map extends Component {
     const { BMap } = window;
     // console.log(BMap);
 
-    // 创建地图实例
+    // 1.创建地图实例
     const map = new BMap.Map("container");
-    // 地图定位的经纬度位置设置
+
+    // 2.地图定位的经纬度位置设置
     let point = new BMap.Point(116.404, 39.915);
-    // 设置地图的位置和缩放级别
+
+    // 3.设置地图的位置和缩放级别
     map.centerAndZoom(point, 15);
   };
 
