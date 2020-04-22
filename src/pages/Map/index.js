@@ -4,7 +4,7 @@ import { NavBar, Icon } from "antd-mobile";
 
 class Map extends Component {
   componentDidMount() {
-    // 调用初始化地图
+    // 调用初始化
     this.initMap();
   }
 
