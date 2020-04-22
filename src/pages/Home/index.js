@@ -17,14 +17,25 @@ class Home extends Component {
     // fullScreen: true,
   };
   componentDidMount() {
+    this.listenRouter();
+  }
+
+  // 监听路由变化
+  listenRouter = () => {
     // 监听路由变化
-    this.props.history.listen((location) => {
+    this.unlisten = this.props.history.listen((location) => {
       if (location.pathname !== this.state.selectedTab) {
         this.setState({
           selectedTab: location.pathname,
         });
       }
     });
+  };
+
+  // 组件销毁
+  componentWillUnmount() {
+    // 销毁监听路由
+    this.unlisten();
   }
 
   // 封装tabBar组件
