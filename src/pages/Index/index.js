@@ -4,6 +4,7 @@ import { BASE_URL } from "../../utils/axios";
 import { getSwiper, getGroups, getNews } from "../../utils/api/Home";
 import "./index.scss";
 import Navs from "../../utils/navConfig";
+import { getCityInfo } from "../../utils/api/City";
 
 class Index extends Component {
   state = {
@@ -19,11 +20,33 @@ class Index extends Component {
     groups: [],
     // 资讯列表数据
     news: [],
+    // 当前城市
+    curCity: {
+      label: "--",
+      value: "",
+    },
   };
 
   componentDidMount() {
     this.getAllDatas();
+    this.getCurCity();
   }
+
+  // 根据百度地图获取当前定位城市
+  getCurCity = () => {
+    let myCity = new window.BMap.LocalCity();
+    myCity.get(async (result) => {
+      // 调用接口获取城市详细信息
+      const { status, data } = await getCityInfo(result.name);
+      console.log(status, data);
+
+      if (status === 200) {
+        this.setState({
+          curCity: data,
+        });
+      }
+    });
+  };
 
   // 获取首页所有接口的数据
   getAllDatas = async () => {
@@ -176,7 +199,7 @@ class Index extends Component {
               push("/cityList");
             }}
           >
-            北京
+            {this.state.curCity.label}
             <i className="iconfont icon-arrow" />
           </div>
           <SearchBar
