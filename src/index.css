@@ -21,8 +21,8 @@ li {
 }
 
 * {
-  /* touch-action: pan-y; */
-  touch-action: none;
+  touch-action: pan-y;
+  /* touch-action: none; */
   box-sizing: border-box;
 }
 #root,
