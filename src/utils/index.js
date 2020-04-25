@@ -3,6 +3,7 @@
 import { getCityInfo } from "./api/City";
 
 const CURR_CITY = "curr_city";
+// export default CURR_CITY;
 // 封装本地存储方法
 // 存储本地数据
 export function setLocal(key, val) {
@@ -40,7 +41,7 @@ export async function getCurCity() {
   // console.log(realName);
 
   // if (!curCity || (curCity && realName!==curCity.label)) { 或
-  if (!curCity || realName !== curCity.label) {
+  if (!curCity) {
     // 如果没有(第一次定位)
     // 获取定位信息，返回promise对象=》resolve
     return new Promise(async (resove, reject) => {
@@ -65,3 +66,5 @@ export async function getCurCity() {
     return Promise.resolve(curCity);
   }
 }
+
+export { CURR_CITY };
