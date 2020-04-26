@@ -69,7 +69,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="home">
         {/* 配置二级路由 */}
 
         <Route exact path="/home" component={Index} />

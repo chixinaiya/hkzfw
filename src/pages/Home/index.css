@@ -1,8 +1,11 @@
-.tabBar{
+.tabBar {
   position: fixed;
   width: 100%;
   bottom: 0;
 }
-.tabBar .iconfont{
+.tabBar .iconfont {
   font-size: 24px;
+}
+.home {
+  height: 100%;
 }
