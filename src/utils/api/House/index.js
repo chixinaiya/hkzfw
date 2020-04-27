@@ -22,3 +22,11 @@ export function getListByFilter(cityId, filters, start, end) {
     },
   });
 }
+// 根据房源id获取房源信息
+export function getDetailById(id) {
+  return api.get(`/houses/${id}`, {
+    params: {
+      id,
+    },
+  });
+}
