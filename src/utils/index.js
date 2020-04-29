@@ -2,7 +2,8 @@
 
 import { getCityInfo } from "./api/City";
 
-const CURR_CITY = "curr_city";
+const CURR_CITY = "curr_city",
+  ZFW_TOKEN = "ZFW_TOKEN";
 // export default CURR_CITY;
 // 封装本地存储方法
 // 存储本地数据
@@ -68,3 +69,4 @@ export async function getCurCity() {
 }
 
 export { CURR_CITY };
+export { ZFW_TOKEN };
