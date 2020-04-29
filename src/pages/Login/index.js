@@ -137,7 +137,7 @@ const NewLogin = withFormik({
       // 存储token
       setLocal(ZFW_TOKEN, data.token);
       // 跳转页面
-      history.push("/");
+      history.push("/home/profile");
     } else {
       Toast.fail(description, 2);
     }

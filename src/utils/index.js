@@ -19,6 +19,24 @@ export function delLocal(key) {
   localStorage.removeItem(key);
 }
 
+// 封装持久化token相关方法
+// 设置token
+export function setToken(token) {
+  setLocal(ZFW_TOKEN, token);
+}
+
+// 删除token
+export function delToken(token) {
+  delLocal(ZFW_TOKEN);
+}
+// 获取token
+export function getToken(token) {
+  return getLocal(ZFW_TOKEN);
+}
+
+// 是否登录
+const isAuth = () => !!getToken();
+
 // 返回Promise=》外表调者可以通过async和await的方式获取resolve数据
 //  城市信息存储到本地
 
@@ -68,5 +86,4 @@ export async function getCurCity() {
   }
 }
 
-export { CURR_CITY };
-export { ZFW_TOKEN };
+export { CURR_CITY, ZFW_TOKEN, isAuth };
