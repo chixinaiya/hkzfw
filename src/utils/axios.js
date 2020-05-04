@@ -3,6 +3,7 @@
 // 2.给axios添加拦截器
 import axios from "axios";
 import { Toast } from "antd-mobile";
+import { getToken } from ".";
 
 // const BASE_URL = "https://api-haoke-dev.itheima.net";
 
@@ -18,6 +19,15 @@ myAxios.interceptors.request.use(
     // Do something before request is sent
     // 加载动画效果 0是只要不手动停止就一直加载
     Toast.loading("加载中...", 0);
+    // 统一加token
+    // 给哪些接口加？
+    // 白名单=》定义不要加token的接口
+    const { url, headers } = config;
+    const whiteName = ["/user/login", "/user/registered"];
+    // 用户相关的接口需要加（排除白名单）
+    if (url.startsWith("/user") && !whiteName.includes(url)) {
+      headers.authorization = getToken();
+    }
     return config;
   },
   function (error) {

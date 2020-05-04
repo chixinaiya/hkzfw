@@ -48,7 +48,10 @@ export default class HouseList extends React.Component {
         {...item}
         key={key}
         onClick={() => {
-          this.props.history.push("/detail/" + item.houseCode);
+          this.props.history.push({
+            pathname: "/detail/" + item.houseCode,
+            data: { id: item.houseCode, backUrl: this.props.location.pathname },
+          });
         }}
         style={style}
       />

@@ -21,3 +21,12 @@ export function getCityList(level = 1) {
 export function getHotCity() {
   return api.get("/area/hot");
 }
+// 获取城市小区相关信息
+export function getCommunity(id, name) {
+  return api.get("/area/community", {
+    params: {
+      id,
+      name,
+    },
+  });
+}

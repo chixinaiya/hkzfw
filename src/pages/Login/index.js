@@ -125,7 +125,7 @@ const NewLogin = withFormik({
       .matches(REG_PWD, "长度为5到12位，只能出现数字、字母、下划线"),
   }),
 
-  handleSubmit: async (values, { props: { history } }) => {
+  handleSubmit: async (values, { props: { history, location } }) => {
     // 获取用户名和密码
     const { username, password } = values;
     //  console.log(username, password);
@@ -137,7 +137,14 @@ const NewLogin = withFormik({
       // 存储token
       setLocal(ZFW_TOKEN, data.token);
       // 跳转页面
-      history.push("/home/profile");
+      // 判断是否有回跳地址
+      // if(location.data && location.data.backUrl) {
+      if (location.data?.backUrl) {
+        // 相当于上边的写法
+        history.push(location.data.backUrl);
+      } else {
+        history.push("/home/profile");
+      }
     } else {
       Toast.fail(description, 2);
     }
