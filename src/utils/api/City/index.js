@@ -30,3 +30,11 @@ export function getCommunity(id, name) {
     },
   });
 }
+// 地图下钻查询房源信息
+export function getMapHouse(id) {
+  return api.get("/area/map", {
+    params: {
+      id,
+    },
+  });
+}

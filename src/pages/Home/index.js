@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, lazy } from "react";
 import { Route } from "react-router-dom";
 import { TabBar } from "antd-mobile";
 
@@ -6,9 +6,9 @@ import "./index.css";
 
 import TabBarConfig from "../../utils/tabBarConfig";
 import Index from "../Index";
-import House from "../House";
+// import House from "../House";
 import Profile from "../Profile";
-
+const House = lazy(() => import("../House"));
 class Home extends Component {
   state = {
     // 选中状态
